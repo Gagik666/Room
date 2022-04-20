@@ -1,0 +1,67 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "5454aae85e45909c8c77a7e864ef5099",
+    "entities": [
+      {
+        "tableName": "Users",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT, `realname` TEXT, `team` TEXT, `imageurl` TEXT, `id_key` INTEGER PRIMARY KEY AUTOINCREMENT)",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "realname",
+            "columnName": "realname",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "team",
+            "columnName": "team",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "imageurl",
+            "columnName": "imageurl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id_key",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_key"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Users_id_key",
+            "unique": true,
+            "columnNames": [
+              "id_key"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Users_id_key` ON `${TABLE_NAME}` (`id_key`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5454aae85e45909c8c77a7e864ef5099')"
+    ]
+  }
+}
