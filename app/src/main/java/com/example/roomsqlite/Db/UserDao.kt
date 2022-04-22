@@ -9,6 +9,10 @@ interface UserDao {
     @Query("SELECT * FROM users")
     fun getAll(): List<User>
 
+
+    @Query("SELECT NOT EXISTS(SELECT * FROM users WHERE name = :name)")
+    fun isNotExists(name: String?): Boolean
+
     @Insert
     fun insertAll(vararg user:User)
 }
